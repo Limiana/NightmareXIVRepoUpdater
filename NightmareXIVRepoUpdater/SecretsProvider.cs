@@ -10,6 +10,8 @@ internal class SecretsProvider
     Dictionary<string, string> Data = [];
     public SecretsProvider()
     {
+        var envvars = (object[])[.. Environment.GetEnvironmentVariables().Keys];
+        Console.WriteLine($"Existing envvars: {string.Join(", ", envvars.Select(x => x.ToString()))}");
         Data["ReadOnlyKey"] = Environment.GetEnvironmentVariable("READONLYKEY");
         Data["NightmareXIVWriteKey"] = Environment.GetEnvironmentVariable("NIGHTMAREXIVWRITEKEY");
         Data["DynamicBridgeStandaloneWriteKey"] = Environment.GetEnvironmentVariable("DYNAMICBRIDGESTANDALONEWRITEKEY");
