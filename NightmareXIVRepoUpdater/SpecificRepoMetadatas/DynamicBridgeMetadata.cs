@@ -14,11 +14,11 @@ internal class DynamicBridgeMetadata : RepoMetadata
     {
     }
 
-    public override void PostBuildAction(PluginManifest manifest)
+    public override async Task PostBuildAction(PluginManifest manifest)
     {
         var dbCredentials = new InMemoryCredentialStore(new(Program.Updater.SecretsProvider.DynamicBridgeStandaloneWriteKey, AuthenticationType.Bearer));
         var dbClient = new GitHubClient(new ProductHeaderValue("NightmareXIVRepoUpdater"), dbCredentials);
 
-        Updater.WritePluginmaster(dbClient, [manifest], "Limiana", "DynamicBridgeStandalone", "pluginmaster_experimental.json");
+        await Updater.WritePluginmaster(dbClient, [manifest], "Limiana", "DynamicBridgeStandalone", "pluginmaster_experimental.json");
     }
 }

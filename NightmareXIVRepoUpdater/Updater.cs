@@ -108,18 +108,18 @@ internal class Updater
                 Console.WriteLine("Image folder not found");
             }
 
-            data.PostBuildAction(baseManifest);
+            await data.PostBuildAction(baseManifest);
 
             pluginmaster.Add(baseManifest);
         }
 
-        WritePluginmaster(nightmareXIVPluginmaster, pluginmaster, "NightmareXIV", "MyDalamudPlugins", "pluginmaster_experimental.json");
+        await WritePluginmaster(nightmareXIVPluginmaster, pluginmaster, "NightmareXIV", "MyDalamudPlugins", "pluginmaster_experimental.json");
 
         var rateLimit = await github.RateLimit.GetRateLimits();
         Console.WriteLine($"Rate limit remains: {rateLimit.Resources.Core.Remaining}");
     }
 
-    public static async void WritePluginmaster(GitHubClient client, IEnumerable<PluginManifest> pluginmaster, string pluginmasterOwner, string pluginmasterRepo, string targetFile, string? writeFilename = null)
+    public static async Task WritePluginmaster(GitHubClient client, IEnumerable<PluginManifest> pluginmaster, string pluginmasterOwner, string pluginmasterRepo, string targetFile, string? writeFilename = null)
     {
         var pluginmasterJson = JsonConvert.SerializeObject(pluginmaster, Formatting.Indented, new JsonSerializerSettings()
         {

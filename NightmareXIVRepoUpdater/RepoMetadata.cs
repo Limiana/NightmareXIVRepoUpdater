@@ -21,5 +21,5 @@ internal class RepoMetadata
         this.JsonMetaLink = $"https://github.com/NightmareXIV/{repoName}/raw/{mainBranchName}/{ProjectName}/{ProjectName}.json";
     }
 
-    public virtual void PostBuildAction(PluginManifest manifest) { }
+    public virtual async Task PostBuildAction(PluginManifest manifest) {  }
 }
