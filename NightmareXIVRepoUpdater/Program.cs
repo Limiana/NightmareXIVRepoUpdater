@@ -6,16 +6,8 @@ internal class Program
 
     static void Main(string[] args)
     {
-        try
-        {
-            Updater = new(args);
-            var task = Updater.Run();
-            task.Wait();
-        }
-        catch(Exception ex)
-        {
-            Console.WriteLine(ex.ToString());
-        }
-        Console.ReadLine();
+        Updater = new(args);
+        var task = Updater.Run();
+        task.Wait();
     }
 }
