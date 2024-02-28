@@ -6,6 +6,14 @@ internal class Program
 
     static void Main(string[] args)
     {
-        Updater = new(args);
+        try
+        {
+            Updater = new(args);
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+        Console.ReadLine();
     }
 }

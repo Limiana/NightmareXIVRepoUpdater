@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace NightmareXIVRepoUpdater;
 internal class RepoMetadata
 {
+    public virtual string Owner => "NightmareXIV";
     public virtual string RepoName { get; }
     public virtual string RepoLink { get; }
     public virtual string JsonMetaLink { get; }
