@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using NightmareXIVRepoUpdater.SpecificRepoMetadatas;
 using Octokit;
 using Octokit.Internal;
 
@@ -6,7 +7,7 @@ namespace NightmareXIVRepoUpdater;
 internal class Updater
 {
     List<RepoMetadata> Meta = [
-        new("DynamicBridge", null, "main"),
+        new DynamicBridgeMetadata("DynamicBridge", null, "main"),
         new("HuntTrainAssistant"),
         new("Lifestream", null, "main"),
         new("DSREyeLocator"),
@@ -27,11 +28,9 @@ internal class Updater
     public Updater(string[] args)
     {
         SecretsProvider = new();
-        var task = Run();
-        task.Wait();
     }
 
-    async Task Run()
+    public async Task Run()
     {
         var roCredentials = new InMemoryCredentialStore(new(SecretsProvider.ReadOnlyKey, AuthenticationType.Bearer));
         var nightmareXivCredentials = new InMemoryCredentialStore(new(SecretsProvider.NightmareXIVWriteKey, AuthenticationType.Bearer));
@@ -125,10 +124,10 @@ internal class Updater
         var pluginmasterJson = JsonConvert.SerializeObject(pluginmaster, Formatting.Indented, new JsonSerializerSettings()
         {
             DefaultValueHandling = DefaultValueHandling.Ignore,
+            ContractResolver = new PluginManifestContractResolver(),
         });
 
         if(writeFilename != null) File.WriteAllText(writeFilename, pluginmasterJson);
-
 
         try
         {

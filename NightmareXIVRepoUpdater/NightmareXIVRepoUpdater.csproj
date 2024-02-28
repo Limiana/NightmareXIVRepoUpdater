@@ -9,7 +9,7 @@
       <SelfContained>false</SelfContained>
       <DebugType>embedded</DebugType>
       <OutputType>exe</OutputType>
-      <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+      <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <ItemGroup>

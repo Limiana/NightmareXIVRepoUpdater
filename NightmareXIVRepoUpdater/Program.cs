@@ -9,6 +9,8 @@ internal class Program
         try
         {
             Updater = new(args);
+            var task = Updater.Run();
+            task.Wait();
         }
         catch(Exception ex)
         {
