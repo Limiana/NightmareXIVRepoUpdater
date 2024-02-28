@@ -113,7 +113,7 @@ internal class Updater
             pluginmaster.Add(baseManifest);
         }
 
-        WritePluginmaster(nightmareXIVPluginmaster, pluginmaster, "NightmareXIV", "MyDalamudPlugins", "pluginmaster_experimental.json", "pluginmaster.json");
+        WritePluginmaster(nightmareXIVPluginmaster, pluginmaster, "NightmareXIV", "MyDalamudPlugins", "pluginmaster_experimental.json");
 
         var rateLimit = await github.RateLimit.GetRateLimits();
         Console.WriteLine($"Rate limit remains: {rateLimit.Resources.Core.Remaining}");
@@ -138,6 +138,7 @@ internal class Updater
             Console.WriteLine($"sha {existingFile[0].Sha}");
             var updateChangeSet = await client.Repository.Content.UpdateFile(pluginmasterOwner, pluginmasterRepo, targetFile,
                new UpdateFileRequest("[API] Pluginmaster autoupdate", pluginmasterJson, existingFile[0].Sha));
+            Console.WriteLine($"Created commit {updateChangeSet.Commit.Sha}");
         }
         catch (NotFoundException ex)
         {
