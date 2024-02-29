@@ -19,6 +19,9 @@ internal class DynamicBridgeMetadata : RepoMetadata
         var dbCredentials = new InMemoryCredentialStore(new(Program.Updater.SecretsProvider.DynamicBridgeStandaloneWriteKey, AuthenticationType.Bearer));
         var dbClient = new GitHubClient(new ProductHeaderValue("NightmareXIVRepoUpdater"), dbCredentials);
 
-        await Updater.WritePluginmaster(dbClient, [manifest], "Limiana", "DynamicBridgeStandalone", "pluginmaster_experimental.json");
+        var manifestClone = JsonConvert.DeserializeObject<PluginManifest>(JsonConvert.SerializeObject(manifest));
+        manifestClone.RepoUrl = "https://github.com/Limiana/DynamicBridgeStandalone";
+
+        await Updater.WritePluginmaster(dbClient, [manifestClone], "Limiana", "DynamicBridgeStandalone", "pluginmaster_experimental.json");
     }
 }
