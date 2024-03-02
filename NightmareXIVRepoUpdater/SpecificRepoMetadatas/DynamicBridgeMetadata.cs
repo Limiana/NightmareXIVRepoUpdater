@@ -18,7 +18,7 @@ internal class DynamicBridgeMetadata : RepoMetadata
     {
         var pluginmasterOwner = "Limiana";
         var pluginmasterRepo = "DynamicBridgeStandalone";
-        var targetFile = "pluginmaster_experimental.json";
+        var targetFile = "pluginmaster.json";
 
         var dbCredentials = new InMemoryCredentialStore(new(Program.Updater.SecretsProvider.DynamicBridgeStandaloneWriteKey, AuthenticationType.Bearer));
         var dbClient = new GitHubClient(new ProductHeaderValue("NightmareXIVRepoUpdater"), dbCredentials);
