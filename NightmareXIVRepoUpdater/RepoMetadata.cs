@@ -21,5 +21,7 @@ internal class RepoMetadata
         this.JsonMetaLink = $"https://github.com/NightmareXIV/{repoName}/raw/{mainBranchName}/{ProjectName}/{ProjectName}.json";
     }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
     public virtual async Task PostBuildAction(PluginManifest manifest) {  }
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 }

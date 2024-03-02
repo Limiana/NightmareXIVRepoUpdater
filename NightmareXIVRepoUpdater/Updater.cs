@@ -105,7 +105,7 @@ internal class Updater
             }
             catch (NotFoundException ex)
             {
-                Console.WriteLine("Image folder not found");
+                Console.WriteLine($"Image folder not found {ex}");
             }
 
             await data.PostBuildAction(baseManifest);

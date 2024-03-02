@@ -6,12 +6,49 @@ using System.IO.Compression;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NightmareXIVRepoUpdater;
 internal static class Utils
 {
+    public static bool AreChangesSignificant(this PluginManifest a, PluginManifest b)
+    {
+        var insignificant =
+            a.AssemblyVersion == b.AssemblyVersion
+                && a.TestingAssemblyVersion == b.TestingAssemblyVersion
+                && a.IconUrl == b.IconUrl
+                && a.DownloadLinkInstall == b.DownloadLinkInstall
+                && a.DownloadLinkTesting == b.DownloadLinkTesting
+                && a.DownloadLinkUpdate == b.DownloadLinkUpdate
+                && a.LastUpdate == b.LastUpdate
+                && a.ApplicableVersion == b.ApplicableVersion
+                && a.DalamudApiLevel == b.DalamudApiLevel
+                && a.Description == b.Description
+                && a.Punchline == b.Punchline
+                && a.Changelog == b.Changelog
+                && a.SupportsProfiles == b.SupportsProfiles
+                && a.ImageUrls.SequenceEqualsNullSafe(b.ImageUrls)
+                && a.IsTestingExclusive == b.IsTestingExclusive
+                && a.Name == b.Name
+                && Math.Abs(a.DownloadCount - b.DownloadCount) < 1000;
+        return !insignificant;
+    }
+
+    public static bool SequenceEqualsNullSafe<T>(this IEnumerable<T>? a, IEnumerable<T>? b)
+    {
+        if (a == null)
+        {
+            return b == null;
+        }
+        if(b == null)
+        {
+            return a == null;
+        }
+        return a.SequenceEqual(b);
+    }
+
     public static ReleaseAsset? FindSuitableAsset(this IEnumerable<ReleaseAsset> assets)
     {
         foreach (var x in assets)
