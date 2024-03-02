@@ -113,7 +113,7 @@ internal class Updater
             pluginmaster.Add(baseManifest);
         }
 
-        await WritePluginmaster(nightmareXIVPluginmaster, pluginmaster, "NightmareXIV", "MyDalamudPlugins", "pluginmaster_experimental.json");
+        await WritePluginmaster(nightmareXIVPluginmaster, pluginmaster, "NightmareXIV", "MyDalamudPlugins", "pluginmaster.json");
 
         var rateLimit = await github.RateLimit.GetRateLimits();
         Console.WriteLine($"Rate limit remains: {rateLimit.Resources.Core.Remaining}");

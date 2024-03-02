@@ -22,6 +22,6 @@ internal class DynamicBridgeMetadata : RepoMetadata
         var manifestClone = JsonConvert.DeserializeObject<PluginManifest>(JsonConvert.SerializeObject(manifest));
         manifestClone.RepoUrl = "https://github.com/Limiana/DynamicBridgeStandalone";
 
-        await Updater.WritePluginmaster(dbClient, [manifestClone], "Limiana", "DynamicBridgeStandalone", "pluginmaster_experimental.json");
+        await Updater.WritePluginmaster(dbClient, [manifestClone], "Limiana", "DynamicBridgeStandalone", "pluginmaster.json");
     }
 }
