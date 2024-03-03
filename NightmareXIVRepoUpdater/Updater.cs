@@ -79,7 +79,7 @@ internal class Updater
                     baseManifest.DownloadLinkTesting = asset.BrowserDownloadUrl;
                     baseManifest.TestingAssemblyVersion = manifest.AssemblyVersion;
                     if (asset.CreatedAt.ToUnixTimeSeconds() > baseManifest.LastUpdate) baseManifest.LastUpdate = asset.CreatedAt.ToUnixTimeSeconds();
-                    baseManifest.Changelog ??= ver.Body;
+                    if(baseManifest.AssemblyVersion < manifest.AssemblyVersion) baseManifest.Changelog = ver.Body;
                 }
             }
             baseManifest.IsTestingExclusive = !mainVersions.Any();
