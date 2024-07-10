@@ -11,7 +11,6 @@ internal class Updater
         new("HuntTrainAssistant"),
         new("Lifestream", null, "main"),
         new("DSREyeLocator"),
-        new("AbyssosToolbox"),
         new("WExtras"),
         new("TextAdvance"),
         new("AntiAfkKick", "AntiAfkKick-Dalamud"),
@@ -20,7 +19,6 @@ internal class Updater
         new("UnloadErrorFuckOff"),
         new("Imagenation"),
         new("ObjectExplorer"),
-        new("Instancinator"),
         ];
 
     public SecretsProvider SecretsProvider;
