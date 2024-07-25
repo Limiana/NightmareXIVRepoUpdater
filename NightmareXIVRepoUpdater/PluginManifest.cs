@@ -78,7 +78,7 @@ internal record PluginManifest
     public int DalamudApiLevel { get; set; } = 10;
     /// <inheritdoc/>
     [JsonProperty]
-    public int TestingDalamudApiLevel { get; set; } = 10;
+    public int TestingDalamudApiLevel { get; set; } = 0;
 
     /// <inheritdoc/>
     [JsonProperty]
