@@ -76,6 +76,7 @@ internal class Updater
                     baseManifest ??= manifest;
                     baseManifest.DownloadLinkTesting = asset.BrowserDownloadUrl;
                     baseManifest.TestingAssemblyVersion = manifest.AssemblyVersion;
+                    baseManifest.TestingDalamudApiLevel = manifest.DalamudApiLevel;
                     if (asset.CreatedAt.ToUnixTimeSeconds() > baseManifest.LastUpdate) baseManifest.LastUpdate = asset.CreatedAt.ToUnixTimeSeconds();
                     if(baseManifest.AssemblyVersion < manifest.AssemblyVersion) baseManifest.Changelog = ver.Body;
                 }

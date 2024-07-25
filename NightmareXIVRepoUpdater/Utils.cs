@@ -25,6 +25,7 @@ internal static class Utils
                 && a.LastUpdate == b.LastUpdate
                 && a.ApplicableVersion == b.ApplicableVersion
                 && a.DalamudApiLevel == b.DalamudApiLevel
+                && a.TestingAssemblyVersion == b.TestingAssemblyVersion
                 && a.Description == b.Description
                 && a.Punchline == b.Punchline
                 && a.Changelog == b.Changelog
