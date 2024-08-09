@@ -19,6 +19,8 @@ internal class Updater
         new("UnloadErrorFuckOff"),
         new("Imagenation"),
         new("ObjectExplorer"),
+        new("NotificationMaster", "NotificationMaster.NXIV", projectFolderName:"NotificationMaster"),
+        new("Mini", "Mini.NXIV", projectFolderName:"Mini"),
         ];
 
     public SecretsProvider SecretsProvider;
@@ -86,7 +88,7 @@ internal class Updater
             baseManifest.AcceptsFeedback = false;
             try
             {
-                var content = await github.Repository.Content.GetAllContents(data.Owner, data.RepoName, $"{data.ProjectName}/images");
+                var content = await github.Repository.Content.GetAllContents(data.Owner, data.RepoName, $"{data.ProjectFolderName}/images");
                 foreach (var image in content)
                 {
                     if (image.Name.Equals("icon.png", StringComparison.OrdinalIgnoreCase))
