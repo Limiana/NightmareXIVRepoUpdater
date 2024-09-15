@@ -21,6 +21,7 @@ internal class Updater
         new("ObjectExplorer"),
         new("NotificationMaster", "NotificationMaster.NXIV", projectFolderName:"NotificationMaster"),
         new("Mini", "Mini.NXIV", projectFolderName:"Mini"),
+        new("Battlevest"),
         ];
 
     public SecretsProvider SecretsProvider;
