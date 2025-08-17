@@ -19,6 +19,7 @@ internal class Updater
         new("UnloadErrorFuckOff"),
         new("Imagenation"),
         new("ObjectExplorer"),
+        new("StandalonePluginManager"),
         //new("NotificationMaster", "NotificationMaster.NXIV", projectFolderName:"NotificationMaster"),
         //new("Mini", "Mini.NXIV", projectFolderName:"Mini"),
         new("Battlevest"),
