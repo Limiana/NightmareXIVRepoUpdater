@@ -87,6 +87,7 @@ internal class Updater
                 }
             }
             baseManifest.IsTestingExclusive = !mainVersions.Any();
+            baseManifest.IsAvailableForTesting = !baseManifest.IsTestingExclusive && mainVersions.Any() && testingVersions.Any() && baseManifest.TestingAssemblyVersion > baseManifest.AssemblyVersion;
             baseManifest.DownloadCount = cnt;
             baseManifest.AcceptsFeedback = false;
             try

@@ -62,6 +62,11 @@ internal record PluginManifest
     [JsonProperty]
     public bool IsTestingExclusive { get; set; }
 
+    /// <summary>
+    /// Gets a value indicating whether this plugin is eligible for testing.
+    /// </summary>
+    public bool IsAvailableForTesting { get; set; }
+
     /// <inheritdoc/>
     [JsonProperty]
     public string? RepoUrl { get; set; }
