@@ -65,6 +65,7 @@ internal record PluginManifest
     /// <summary>
     /// Gets a value indicating whether this plugin is eligible for testing.
     /// </summary>
+    [JsonProperty]
     public bool IsAvailableForTesting { get; set; }
 
     /// <inheritdoc/>
